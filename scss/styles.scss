@@ -6,6 +6,9 @@ $md3-primary: #6200EE; // Indigo 500
 $md3-primary-light: #9D47FF; // Indigo 200
 $md3-primary-dark: #0A00B6; // Indigo 700
 
+
+$md3-border: #e0e0e0; // Bordes
+
 // Secondary palette
 $md3-secondary: #03DAC6; // Teal 200
 $md3-secondary-light: #67E1D5; // Teal 100
@@ -222,6 +225,61 @@ $dark-theme-link-hover-color: $md3-dark-on-primary;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 
+// Personalización del modal
+$modal-content-bg: #ffffff; // Fondo blanco o claro según MD3
+$modal-content-border-color: rgba(0, 0, 0, 0.12); // Borde sutil
+$modal-content-border-width: 1px;
+$modal-border-radius: 28px; // Bordes redondeados según MD3
+$modal-inner-padding: 24px; // Espaciado interno
+
+// Sombra suave según MD3
+$modal-content-box-shadow-xs: 0 2px 4px rgba(0, 0, 0, 0.2);
+$modal-content-box-shadow-sm: 0 4px 8px rgba(0, 0, 0, 0.2);
+$modal-content-box-shadow-md: 0 6px 12px rgba(0, 0, 0, 0.3);
+$modal-content-box-shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+
+// Botón de cierre (X)
+$modal-header-border-color: rgba(0, 0, 0, 0.12);
+$modal-header-padding: 16px;
+$modal-footer-border-color: rgba(0, 0, 0, 0.12);
+$modal-footer-padding: 16px;
+
+// Animación sutil para el modal
+$modal-fade-transform: translateY(10px);
+$modal-show-transform: none;
+$modal-transition: all 0.3s ease-in-out;
+
+
+// Estilo base para las cards
+$card-bg: #ffffff; // Fondo blanco o claro según MD3
+$card-border-color: rgba(0, 0, 0, 0.12); // Borde sutil
+$card-border-width: 1px;
+$card-border-radius: 16px; // Bordes redondeados según MD3
+$card-inner-border-radius: $card-border-radius; // Asegura que los elementos internos coincidan
+
+// Sombra suave según MD3 (niveles de elevación)
+$card-box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+$card-box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.2);
+$card-box-shadow-lg: 0 8px 12px rgba(0, 0, 0, 0.3);
+
+// Espaciado interno
+$card-spacer-y: 16px;
+$card-spacer-x: 16px;
+
+// Títulos y textos
+$card-title-color: #1c1b1f; // Color de texto principal según MD3
+$card-subtitle-color: #49454f; // Color de subtítulos
+$card-text-color: #49454f; // Color del contenido
+$card-title-font-size: 1.25rem; // Tamaño de título
+$card-subtitle-font-size: 1rem;
+$card-text-font-size: 0.875rem;
+
+// Imagen dentro de la card
+$card-img-overlay-padding: 16px;
+
+// Transiciones para efectos sutiles
+$card-transition: all 0.3s ease-in-out;
+
 
 // Aplicar la tipografía
 body {
@@ -251,3 +309,92 @@ body {
     }
   }
   
+
+  // Estilo de paginación
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  background-color: $md3-surface;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .page-item {
+    margin: 0 4px;
+
+    &.active .page-link {
+      background-color: $md3-primary;
+      color: $md3-on-primary;
+      border-color: $md3-primary;
+      border-radius: 50%;
+    }
+
+    .page-link {
+      padding: 0.5rem 1rem;
+      color: $md3-on-surface;
+      background-color: $md3-surface;
+      border: 1px solid $md3-border;
+      border-radius: 50%;
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      &:hover {
+        background-color: lighten($md3-primary, 30%);
+        color: $md3-on-primary;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      &:focus {
+        box-shadow: 0 0 0 3px rgba($md3-primary, 0.5);
+      }
+    }
+  }
+}
+
+
+.form-control {
+  background-color: $md3-surface;
+  color: $md3-on-surface;
+  border: none;
+  border-bottom: 2px solid $md3-border;
+  border-radius: 0;
+  padding: 0.75rem 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &::placeholder {
+    color: $md3-border;
+    opacity: 1;
+  }
+
+  &:focus {
+    border-bottom: 2px solid $md3-primary;
+    box-shadow: 0 1px 0 0 $md3-primary;
+  }
+
+  &.is-invalid {
+    border-bottom: 2px solid $md3-error;
+  }
+}
+
+// Labels flotantes estilo MD3
+.form-floating > .form-control {
+  padding-top: 1.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.form-floating > label {
+  color: $md3-border;
+  font-size: 1rem;
+  left: 0.5rem;
+  top: 1rem;
+  transition: all 0.2s ease-out;
+}
+
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  top: 0.25rem;
+  font-size: 0.75rem;
+  color: $md3-primary;
+}
